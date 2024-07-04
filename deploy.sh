@@ -4,7 +4,7 @@
 read -p "Enter the public IP address: " PUBLIC_IP
 
 # Define the directories
-PROJECT_DIR=~/molecular-web-app
+PROJECT_DIR=~
 MOLE_TOOL_DIR=$PROJECT_DIR/mole-tool
 BACKEND_DIR=$MOLE_TOOL_DIR/backend
 NGINX_CONF=/etc/nginx/sites-available/default
