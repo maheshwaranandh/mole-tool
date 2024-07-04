@@ -33,8 +33,8 @@ sudo sed -i "s/__PUBLIC_IP__/$PUBLIC_IP/" $NGINX_CONF
 
 #handle permission for files problem
 sudo usermod -aG ubuntu www-data
-sudo chown -R ubuntu:ubuntu /home/ubuntu/molecular-web-app/mols_src/
-sudo chmod -R 775 /home/ubuntu/molecular-web-app/mols_src/
+sudo chown -R ubuntu:ubuntu $PROJECT_DIR/
+sudo chmod -R 775 $PROJECT_DIR/
 
 # Restart Nginx to apply changes
 echo "Restarting Nginx..."
