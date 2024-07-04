@@ -38,7 +38,10 @@ ${data.numberOfCycles}
         }
 
         const execPath = path.join(__dirname, '../../mols_src/./lmols');
-        exec(execPath, (err, stdout, stderr) => {
+        const execOptions = {
+            cwd: path.join(__dirname, '../../mols_src')
+        };
+        exec(execPath,execOptions, (err, stdout, stderr) => {
             if (err) {
                 console.error('Error executing lmols', err);
                 return res.status(500).send('Error executing lmols');
