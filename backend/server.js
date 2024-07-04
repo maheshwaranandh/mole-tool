@@ -46,7 +46,8 @@ ${data.numberOfCycles}
             console.log(`lmols stdout: ${stdout}`);
             console.error(`lmols stderr: ${stderr}`);
 
-            const resultsPath = path.join(__dirname, '../../mols_src/results');
+            // Use the location provided by the user
+            const resultsPath = path.join(data.location.slice(0, -1));  // Remove the trailing slash
             const outputZip = path.join(__dirname, '../../mols_src/results.zip');
             const output = fs.createWriteStream(outputZip);
             const archive = archiver('zip', {
