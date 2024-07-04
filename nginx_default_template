@@ -21,7 +21,7 @@ server {
     }
 
     location /download/ {
-        alias /home/ubuntu/molecular-web-app/mols_src/;
+        alias /home/ubuntu/mols_src/;
         autoindex on;
         sendfile off;
         types {
