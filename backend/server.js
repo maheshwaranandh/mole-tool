@@ -71,8 +71,6 @@ ${data.numberOfCycles}
             
             console.log(`lmols stdout: ${stdout}`);
             console.error(`lmols stderr: ${stderr}`);
-
-            const resultsPath = path.join('/home/ubuntu/mols_src/results');
             const outputZip = path.join(__dirname, '../../mols_src/results.zip');
             const output = fs.createWriteStream(outputZip);
             const archive = archiver('zip', {
