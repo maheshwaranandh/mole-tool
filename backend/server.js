@@ -81,6 +81,7 @@ ${data.numberOfCycles}
 
             output.on('close', () => {
                 console.log(`Zip file created: ${archive.pointer()} total bytes`);
+                res.status(200).send('Zip file created');
             });
 
             archive.on('error', (err) => {
