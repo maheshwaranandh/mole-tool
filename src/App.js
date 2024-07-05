@@ -5,7 +5,6 @@ import { FaDownload } from 'react-icons/fa';
 
 function App() {
     const [formData, setFormData] = useState({
-        location: '',
         moleculeName: '',
         sequence: '',
         numberOfCycles: '',
@@ -40,19 +39,6 @@ function App() {
         <div className="App">
             <h1>Molecule Tool Form</h1>
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Location of Results Directory:</label>
-                    <input
-                        type="text"
-                        name="location"
-                        value={formData.location}
-                        onChange={handleChange}
-                        pattern="\S+"
-                        required
-                        placeholder="Enter location"
-                        disabled={loading}
-                    />
-                </div>
                 <div className="form-group">
                     <label>Molecule Name:</label>
                     <input

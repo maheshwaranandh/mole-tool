@@ -19,7 +19,7 @@ app.post('/api/update-file', (req, res) => {
     const filePath = path.join(__dirname, '../../mols_src/usermols.inp');
 
     const content = `
-${data.location}
+/home/ubuntu/mols_src/results/
 ${data.moleculeName}
 ${data.sequence}
 ${data.numberOfCycles}
@@ -38,6 +38,26 @@ ${data.numberOfCycles}
             return res.status(500).send('Error writing to file');
         }
 
+        const resultsPath = path.join('/home/ubuntu/mols_src/results');
+
+        // Function to delete all files in the results directory
+        fs.readdir(resultsPath, (err, files) => {
+            if (err) {
+                console.error('Error reading results directory', err);
+                return res.status(500).send('Error reading results directory');
+            }
+
+            files.forEach(file => {
+                const filePath = path.join(resultsPath, file);
+                fs.unlink(filePath, err => {
+                    if (err) {
+                        console.error('Error deleting file', err);
+                        return res.status(500).send('Error deleting file');
+                    }
+                });
+            });
+        });
+
         const execPath = path.join(__dirname, '../../mols_src/./lmols');
         const execOptions = {
             cwd: path.join(__dirname, '../../mols_src')
@@ -52,8 +72,7 @@ ${data.numberOfCycles}
             console.log(`lmols stdout: ${stdout}`);
             console.error(`lmols stderr: ${stderr}`);
 
-            // Use the location provided by the user
-            const resultsPath = path.join(data.location.slice(0, -1));  // Remove the trailing slash
+            const resultsPath = path.join('/home/ubuntu/mols_src/results');
             const outputZip = path.join(__dirname, '../../mols_src/results.zip');
             const output = fs.createWriteStream(outputZip);
             const archive = archiver('zip', {
