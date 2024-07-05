@@ -32,6 +32,7 @@ ${data.numberOfCycles}
 `;
 
     fs.writeFile(filePath, content.trim(), (err) => {
+
         if (err) {
             console.error('Error writing to file', err);
             return res.status(500).send('Error writing to file');
@@ -41,11 +42,13 @@ ${data.numberOfCycles}
         const execOptions = {
             cwd: path.join(__dirname, '../../mols_src')
         };
+
         exec(execPath,execOptions, (err, stdout, stderr) => {
             if (err) {
                 console.error('Error executing lmols', err);
                 return res.status(500).send('Error executing lmols');
             }
+            
             console.log(`lmols stdout: ${stdout}`);
             console.error(`lmols stderr: ${stderr}`);
 
@@ -59,7 +62,6 @@ ${data.numberOfCycles}
 
             output.on('close', () => {
                 console.log(`Zip file created: ${archive.pointer()} total bytes`);
-                res.json({ downloadUrl: `http://18.212.115.85/api/download/results.zip` });
             });
 
             archive.on('error', (err) => {

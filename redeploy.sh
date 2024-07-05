@@ -10,6 +10,10 @@ BACKEND_DIR=$MOLE_TOOL_DIR/backend
 NGINX_CONF=/etc/nginx/sites-available/default
 ENV_FILE=$MOLE_TOOL_DIR/.env
 
+# Write the Nginx configuration template
+echo "Writing Nginx configuration..."
+sudo cp $MOLE_TOOL_DIR/nginx_default_template $NGINX_CONF
+
 # Update the Nginx configuration with the public IP
 echo "Updating Nginx configuration with public IP..."
 sudo sed -i "s/__PUBLIC_IP__/$PUBLIC_IP/" $NGINX_CONF

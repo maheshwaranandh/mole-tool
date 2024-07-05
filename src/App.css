@@ -72,14 +72,14 @@ button:hover {
   justify-content: center;
   text-decoration: none;
   color: white;
-  background-color: #f39c12; /* orange */
+  background-color: #f39c12;
   padding: 10px 20px;
   border-radius: 5px;
   transition: background-color 0.3s ease-in-out;
 }
 
 .download-link a:hover {
-  background-color: #5dc628; /* dark orange */
+  background-color: #5dc628;
 }
 
 .download-link svg {
